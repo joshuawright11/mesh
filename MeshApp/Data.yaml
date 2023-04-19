@@ -1,0 +1,54 @@
+---
+- View 1:
+    - vstack:
+        alignment: center
+        background: 00ff00
+        shadow: [0000ff, 10, 5, 20]
+        padding: [10, 20, 30, 40]
+        fill: [x, y]
+        content:
+            - text:
+                text: hello
+                fontSize: 32
+            - hstack:
+                content:
+                    - text:
+                        text: one
+                    - text:
+                        text: two
+                    - text:
+                        text: three
+            - zstack:
+                content:
+                    - text:
+                        text: 1
+                    - text:
+                        text: 2
+                    - text:
+                        text: 3
+            - button:
+                text: PUSH!
+                action: [present, push, View 1]
+            - button:
+                text: MODAL!
+                action: [present, modal, View 1]
+            - button:
+                text: SHEET!
+                action: [present, sheet, View 2]
+- View 2:
+    - vstack:
+        title: View 2
+        content:
+            - text:
+                text: View 2 is the best!
+            - button:
+                text: Present View 1!
+                action: [present, push, View 1]
+            - button:
+                text: Present Sheet View 3!
+                action: [present, sheet, View 3]
+- View 3:
+    - vstack:
+        content:
+            - text: 
+                text: View 3 Appears!
