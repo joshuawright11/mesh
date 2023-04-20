@@ -26,3 +26,14 @@ extension Color {
         )
     }
 }
+
+extension View {
+    @ViewBuilder
+    func ifLet<T>(_ value: T?, modifier: (Self, T) -> some View) -> some View {
+        if let value {
+            modifier(self, value)
+        } else {
+            self
+        }
+    }
+}

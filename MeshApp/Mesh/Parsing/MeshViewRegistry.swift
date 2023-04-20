@@ -22,5 +22,7 @@ final class MeshViewRegistry {
         register(MeshSpacer.self)
         register(MeshButton.self)
         register(MeshTabView.self)
+        register(MeshImage.self)
+        register(MeshField.self)
     }
 }

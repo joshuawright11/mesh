@@ -8,6 +8,11 @@
         padding: [10, 20, 30, 40]
         fill: x
         content:
+            - image:
+                symbol: externaldrive.badge.questionmark
+            - image:
+                url: https://images.unsplash.com/photo-1681405203174-240c946cf06e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2982&q=80
+                resize: fill
             - text:
                 text: hello
                 fontSize: 32

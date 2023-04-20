@@ -105,13 +105,4 @@ extension View {
             .ifLet(properties.cornerRadius) { $0.cornerRadius($1) }
             .ifLet(properties.title) { $0.navigationTitle($1) }
     }
-
-    @ViewBuilder
-    private func ifLet<T>(_ value: T?, modifier: (Self, T) -> some View) -> some View {
-        if let value {
-            modifier(self, value)
-        } else {
-            self
-        }
-    }
 }
