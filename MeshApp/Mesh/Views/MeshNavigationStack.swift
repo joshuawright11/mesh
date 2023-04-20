@@ -34,6 +34,9 @@ struct MeshNavigationStack<Content: View>: View, Presenter {
         }
         .fullScreenCover(item: $fullscreen) {
             $0.render(inNavigation: true)
+                .onTapGesture(count: 5) {
+                    fullscreen = nil
+                }
         }
         .onAppear {
             if !inTab { router.pushPresenter(self) }

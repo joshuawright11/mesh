@@ -12,7 +12,7 @@ struct MeshApp: App {
                 VStack {
                     List(router.screens) { screen in
                         Button(screen.id) {
-                            router.present(id: screen.id, style: .modal)
+                            router.present(id: screen.id, style: .fullscreen)
                         }
                     }
                     .navigationTitle("Screens")

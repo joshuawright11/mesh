@@ -60,9 +60,9 @@
             - screen: View 1
               title: Received
               icon: tray.and.arrow.down.fill
-            - screen: View 2
+            - screen: View 1
               title: Sent
               icon: tray.and.arrow.up.fill
-            - screen: View 3
+            - screen: View 1
               title: Account
               icon: person.crop.circle.fill
