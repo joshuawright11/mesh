@@ -34,15 +34,31 @@ final class Router: ObservableObject {
             return
         }
 
+        let debug: String = {
+            switch style {
+            case .fullscreen:
+                return "Fullscreen"
+            case .modal:
+                return "Modal"
+            case .sheet:
+                return "Sheet"
+            case .push, .none:
+                return "Push"
+            }
+        }()
+
+        print("[Router] \(debug) \(id).")
         presenters.last?.present(screen: screen, style: style ?? .push)
     }
 
-    func pushModalPresenter(_ presenter: Presenter) {
+    func pushPresenter(_ presenter: Presenter) {
+        print("[Router] Push Presenter.")
         presenters.append(presenter)
     }
 
-    func popModalPresenter() {
-        presenters = presenters.dropLast(1)
+    func popPresenter() {
+        print("[Router] Pop Presenter.")
+        presenters = presenters.dropLast()
     }
 }
 
@@ -50,6 +66,7 @@ enum PresentationStyle {
     case modal
     case push
     case sheet
+    case fullscreen
 }
 
 protocol Presenter {

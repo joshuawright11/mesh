@@ -55,7 +55,6 @@ struct MeshButton: MeshView {
     func tapped() {
         switch action {
         case .present(let screenId, let style):
-            print("[Actions] Present screen \(screenId)!")
             router.present(id: screenId, style: style)
         case .action(let actionId):
             print("[Actions] Do action \(actionId)!")

@@ -41,7 +41,7 @@ struct MeshZStack: MeshView {
     var body: some View {
         ZStack(alignment: alignment) {
             ForEach(Array(content.enumerated()), id: \.offset) { _, node in
-                node
+                node.render()
             }
         }
     }

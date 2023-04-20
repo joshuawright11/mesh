@@ -1,11 +1,12 @@
 ---
 - View 1:
     - vstack:
+        title: View 1
         alignment: center
         background: 00ff00
         shadow: [0000ff, 10, 5, 20]
         padding: [10, 20, 30, 40]
-        fill: [x, y]
+        fill: x
         content:
             - text:
                 text: hello
@@ -49,6 +50,19 @@
                 action: [present, sheet, View 3]
 - View 3:
     - vstack:
+        title: View 3
         content:
             - text: 
                 text: View 3 Appears!
+- View 4:
+    - tab:
+        content: 
+            - screen: View 1
+              title: Received
+              icon: tray.and.arrow.down.fill
+            - screen: View 2
+              title: Sent
+              icon: tray.and.arrow.up.fill
+            - screen: View 3
+              title: Account
+              icon: person.crop.circle.fill

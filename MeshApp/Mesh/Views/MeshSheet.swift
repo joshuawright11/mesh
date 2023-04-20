@@ -14,8 +14,8 @@ struct MeshSheet: View {
                     .onTapGesture {
                         self.screen = nil
                     }
-                Renderer()
-                    .render(screen)
+                screen
+                    .render()
                     .frame(maxWidth: .infinity)
                     .padding(.top, 16)
                     .padding(.bottom, 32)

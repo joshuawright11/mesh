@@ -19,7 +19,7 @@ struct TemplateParser {
         // Parse into views, ignoring missing pieces
         let sequence = node?.sequence ?? []
         let screens = sequence.compactMap { $0.decodeMeshScreen() }
-        print("[Parsing] Successfully parsed screens: \(screens.map(\.id)).")
+        print("[Parsing] Loaded screens: \(screens.map(\.id)).")
         return screens
     }
 }

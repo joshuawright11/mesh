@@ -10,12 +10,9 @@ struct MeshApp: App {
         WindowGroup {
             MeshNavigationStack {
                 VStack {
-                    Button("Sheet") {
-                        router.present(id: "View 2", style: .sheet)
-                    }
                     List(router.screens) { screen in
                         Button(screen.id) {
-                            router.present(id: screen.id)
+                            router.present(id: screen.id, style: .modal)
                         }
                     }
                     .navigationTitle("Screens")

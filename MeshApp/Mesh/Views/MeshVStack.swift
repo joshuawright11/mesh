@@ -31,7 +31,7 @@ struct MeshVStack: MeshView {
     var body: some View {
         VStack(alignment: alignment, spacing: spacing) {
             ForEach(Array(content.enumerated()), id: \.offset) { _, node in
-                node
+                node.render()
             }
         }
     }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		033AE48329EF4DBB00A45B57 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48229EF4DBB00A45B57 /* Renderer.swift */; };
 		033AE48529EF6AE600A45B57 /* MeshSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48429EF6AE600A45B57 /* MeshSpacer.swift */; };
 		033AE48A29EF6F0700A45B57 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48929EF6F0700A45B57 /* Router.swift */; };
 		033AE48C29F05DEF00A45B57 /* MeshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48B29F05DEF00A45B57 /* MeshButton.swift */; };
@@ -16,11 +15,16 @@
 		035C38E629EE2C210035EC9A /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 035C38E529EE2C210035EC9A /* Yams */; };
 		035C38EB29EF32890035EC9A /* MeshHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38EA29EF32890035EC9A /* MeshHStack.swift */; };
 		035C38ED29EF32910035EC9A /* MeshVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38EC29EF32910035EC9A /* MeshVStack.swift */; };
-		035C38EF29EF32A00035EC9A /* MeshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38EE29EF32A00035EC9A /* MeshView.swift */; };
+		035C38EF29EF32A00035EC9A /* MeshScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38EE29EF32A00035EC9A /* MeshScreen.swift */; };
 		035C38F129EF33060035EC9A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38F029EF33060035EC9A /* Parser.swift */; };
 		035C38F429EF333A0035EC9A /* MeshViewRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38F329EF333A0035EC9A /* MeshViewRegistry.swift */; };
 		035C38F629EF33B60035EC9A /* MeshZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38F529EF33B60035EC9A /* MeshZStack.swift */; };
 		035C38F829EF33DF0035EC9A /* MeshText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38F729EF33DF0035EC9A /* MeshText.swift */; };
+		039788F129F1B9E900E67E19 /* MeshTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039788F029F1B9E900E67E19 /* MeshTabView.swift */; };
+		039788F329F1C96A00E67E19 /* MeshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039788F229F1C96A00E67E19 /* MeshView.swift */; };
+		039788F629F1C9B900E67E19 /* Yams+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039788F529F1C9B900E67E19 /* Yams+Utilities.swift */; };
+		039788F829F1C9C100E67E19 /* SwiftUI+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039788F729F1C9C100E67E19 /* SwiftUI+Utilities.swift */; };
+		039788FA29F1CA2E00E67E19 /* MeshNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039788F929F1CA2E00E67E19 /* MeshNavigationStack.swift */; };
 		03FEA5B329CE501800D6A75D /* MeshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEA5B229CE501800D6A75D /* MeshApp.swift */; };
 		03FEA5B729CE501900D6A75D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FEA5B629CE501900D6A75D /* Assets.xcassets */; };
 		03FEA5C429CE501900D6A75D /* MeshAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEA5C329CE501900D6A75D /* MeshAppTests.swift */; };
@@ -46,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		033AE48229EF4DBB00A45B57 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		033AE48429EF6AE600A45B57 /* MeshSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshSpacer.swift; sourceTree = "<group>"; };
 		033AE48929EF6F0700A45B57 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		033AE48B29F05DEF00A45B57 /* MeshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshButton.swift; sourceTree = "<group>"; };
@@ -54,11 +57,16 @@
 		035C38E229EE2B9C0035EC9A /* Data.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = Data.yaml; sourceTree = "<group>"; };
 		035C38EA29EF32890035EC9A /* MeshHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshHStack.swift; sourceTree = "<group>"; };
 		035C38EC29EF32910035EC9A /* MeshVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVStack.swift; sourceTree = "<group>"; };
-		035C38EE29EF32A00035EC9A /* MeshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshView.swift; sourceTree = "<group>"; };
+		035C38EE29EF32A00035EC9A /* MeshScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshScreen.swift; sourceTree = "<group>"; };
 		035C38F029EF33060035EC9A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		035C38F329EF333A0035EC9A /* MeshViewRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshViewRegistry.swift; sourceTree = "<group>"; };
 		035C38F529EF33B60035EC9A /* MeshZStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshZStack.swift; sourceTree = "<group>"; };
 		035C38F729EF33DF0035EC9A /* MeshText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshText.swift; sourceTree = "<group>"; };
+		039788F029F1B9E900E67E19 /* MeshTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshTabView.swift; sourceTree = "<group>"; };
+		039788F229F1C96A00E67E19 /* MeshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshView.swift; sourceTree = "<group>"; };
+		039788F529F1C9B900E67E19 /* Yams+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Yams+Utilities.swift"; sourceTree = "<group>"; };
+		039788F729F1C9C100E67E19 /* SwiftUI+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Utilities.swift"; sourceTree = "<group>"; };
+		039788F929F1CA2E00E67E19 /* MeshNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshNavigationStack.swift; sourceTree = "<group>"; };
 		03FEA5AF29CE501800D6A75D /* MeshApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeshApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FEA5B229CE501800D6A75D /* MeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshApp.swift; sourceTree = "<group>"; };
 		03FEA5B629CE501900D6A75D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,7 +110,7 @@
 				035C38F929EF388B0035EC9A /* Renderer */,
 				035C38F229EF330B0035EC9A /* Parsing */,
 				035C38E929EF327D0035EC9A /* Views */,
-				035C38EE29EF32A00035EC9A /* MeshView.swift */,
+				039788F429F1C9AD00E67E19 /* Utilities */,
 			);
 			path = Mesh;
 			sourceTree = "<group>";
@@ -125,6 +133,8 @@
 				035C38F729EF33DF0035EC9A /* MeshText.swift */,
 				033AE48B29F05DEF00A45B57 /* MeshButton.swift */,
 				033AE48D29F0B77F00A45B57 /* MeshSheet.swift */,
+				039788F029F1B9E900E67E19 /* MeshTabView.swift */,
+				039788F929F1CA2E00E67E19 /* MeshNavigationStack.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,9 +151,19 @@
 		035C38F929EF388B0035EC9A /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
-				033AE48229EF4DBB00A45B57 /* Renderer.swift */,
+				035C38EE29EF32A00035EC9A /* MeshScreen.swift */,
+				039788F229F1C96A00E67E19 /* MeshView.swift */,
 			);
 			path = Renderer;
+			sourceTree = "<group>";
+		};
+		039788F429F1C9AD00E67E19 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				039788F729F1C9C100E67E19 /* SwiftUI+Utilities.swift */,
+				039788F529F1C9B900E67E19 /* Yams+Utilities.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		03FEA5A629CE501800D6A75D = {
@@ -170,8 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				03FEA5B229CE501800D6A75D /* MeshApp.swift */,
-				035C38E229EE2B9C0035EC9A /* Data.yaml */,
 				033AE48129EF4D2300A45B57 /* Mesh */,
+				035C38E229EE2B9C0035EC9A /* Data.yaml */,
 				03FEA5B629CE501900D6A75D /* Assets.xcassets */,
 			);
 			path = MeshApp;
@@ -330,17 +350,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039788F629F1C9B900E67E19 /* Yams+Utilities.swift in Sources */,
+				039788FA29F1CA2E00E67E19 /* MeshNavigationStack.swift in Sources */,
+				039788F329F1C96A00E67E19 /* MeshView.swift in Sources */,
 				035C38F629EF33B60035EC9A /* MeshZStack.swift in Sources */,
 				035C38F129EF33060035EC9A /* Parser.swift in Sources */,
 				035C38F429EF333A0035EC9A /* MeshViewRegistry.swift in Sources */,
+				039788F129F1B9E900E67E19 /* MeshTabView.swift in Sources */,
 				035C38ED29EF32910035EC9A /* MeshVStack.swift in Sources */,
+				039788F829F1C9C100E67E19 /* SwiftUI+Utilities.swift in Sources */,
 				035C38F829EF33DF0035EC9A /* MeshText.swift in Sources */,
 				033AE48E29F0B77F00A45B57 /* MeshSheet.swift in Sources */,
 				03FEA5B329CE501800D6A75D /* MeshApp.swift in Sources */,
-				035C38EF29EF32A00035EC9A /* MeshView.swift in Sources */,
+				035C38EF29EF32A00035EC9A /* MeshScreen.swift in Sources */,
 				033AE48A29EF6F0700A45B57 /* Router.swift in Sources */,
 				033AE48C29F05DEF00A45B57 /* MeshButton.swift in Sources */,
-				033AE48329EF4DBB00A45B57 /* Renderer.swift in Sources */,
 				035C38EB29EF32890035EC9A /* MeshHStack.swift in Sources */,
 				033AE48529EF6AE600A45B57 /* MeshSpacer.swift in Sources */,
 			);
@@ -500,7 +524,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MeshApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 7943G7Y9QA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -529,7 +552,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MeshApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 7943G7Y9QA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
