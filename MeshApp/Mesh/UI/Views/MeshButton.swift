@@ -6,6 +6,8 @@ struct MeshButton: MeshView {
 
     enum Action {
         case present(String, PresentationStyle)
+        case dismiss(Bool)
+        case openURL(String)
         case action(String)
     }
 
@@ -42,6 +44,12 @@ struct MeshButton: MeshView {
             action = .present(actionSequence?[2].string ?? "", style)
         case 2 where actionSequence?[0].string == "action":
             action = .action(actionSequence?[1].string ?? "")
+        case 2 where actionSequence?[0].string == "open":
+            action = .openURL(actionSequence?[1].string ?? "")
+        case 1 where actionSequence?[0].string == "dismiss":
+            action = .dismiss(false)
+        case 2 where actionSequence?[0].string == "dismiss" && actionSequence?[1].string == "modal":
+            action = .dismiss(true)
         default:
             print("[Parsing] Unknown button action length \(actionSequence?.count ?? 0).")
             action = nil
@@ -58,7 +66,10 @@ struct MeshButton: MeshView {
             app.present(id: screenId, style: style)
         case .action(let actionId):
             print("[Actions] Do action `\(actionId)`!")
-            app.openURL(URL(string: "https://www.apple.com")!)
+        case .openURL(let urlString):
+            app.openURL(URL(string: urlString)!)
+        case .dismiss(let modal):
+            app.dismiss(modal: modal)
         case .none:
             break
         }

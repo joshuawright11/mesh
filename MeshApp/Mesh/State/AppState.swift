@@ -32,12 +32,12 @@ final class AppState: ObservableObject {
         presenters.last?.present(screen: screen, style: style ?? .push)
     }
 
-    /// TODO investigate presenting when background / foregrounding?
     func pushPresenter(_ presenter: Presenter) {
         print("[Router] Push Presenter.")
         presenters.append(presenter)
     }
 
+    /// TODO investigate presenting instant pop/push animation after background / foregrounding? (via open url or changing tabs)
     func popPresenter() {
         print("[Router] Pop Presenter.")
         presenters = presenters.dropLast()
@@ -45,5 +45,18 @@ final class AppState: ObservableObject {
 
     func openURL(_ url: URL) {
         presenters.last?.openURL(url)
+    }
+
+    /// This default behavior of this function depends on the router state:
+    ///
+    /// 0. If a sheet is active, it will be dismissed.
+    /// 1. Otherwise, if the current navigation stack is more than 1, the top view will be
+    ///    popped.
+    /// 2. Otherwise, the top modally presented view will be dismissed.
+    ///
+    /// You may pass the `modal` parameter to force this function to pop the
+    /// top modal view, if one exists.
+    func dismiss(modal: Bool = false) {
+        presenters.last?.dismiss(modal: modal)
     }
 }

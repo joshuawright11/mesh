@@ -14,6 +14,7 @@ struct MeshTabView: MeshView, Presenter {
 
     @EnvironmentObject var app: AppState
     @Environment(\.openURL) var openURLAction
+    @Environment(\.dismiss) var dismiss
     @State var selectedTab: Int
 
     @State private var modal: MeshScreen?
@@ -88,16 +89,19 @@ struct MeshTabView: MeshView, Presenter {
     func openURL(_ url: URL) {
         openURLAction(url)
     }
+
+    func dismiss(modal: Bool) {
+        guard !modal else {
+            dismiss()
+            return
+        }
+
+        if sheet != nil {
+            sheet = nil
+        } else if items[selectedTab].path.count > 0 {
+            _ = items[selectedTab].path.popLast()
+        } else {
+            dismiss()
+        }
+    }
 }
-
-/*
- Tab View
- - each element should have it's own navigation view
- - tab should not be wrapped in a navigation view
-
- - crash when tab in nav and views have nav
- - tab should not be nav!
-
- - tab should change the top level presenter, as it changes tabs
-    - technically the presenter at it's index; in case it's not at index 0
- */

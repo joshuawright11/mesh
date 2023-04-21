@@ -46,8 +46,17 @@
                 text: Sheet
                 action: [present, sheet, View 2]
             - button:
-                text: Action
+                text: Action - Login
                 action: [action, login]
+            - button:
+                text: Open URL
+                action: [open, https://www.apple.com]
+            - button:
+                text: Dismiss
+                action: [dismiss]
+            - button:
+                text: Dismiss Modal
+                action: [dismiss, modal]
 - View 2:
     - vstack:
         title: View 2
@@ -60,6 +69,12 @@
             - button:
                 text: Present Sheet View 3!
                 action: [present, sheet, View 3]
+            - button:
+                text: Dismiss!
+                action: [dismiss]
+            - button:
+                text: Dismiss Modal!
+                action: [dismiss, modal]
 - View 3:
     - vstack:
         title: View 3

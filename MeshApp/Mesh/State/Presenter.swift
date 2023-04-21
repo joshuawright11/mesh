@@ -3,6 +3,7 @@ import Foundation
 /// Delegates presenting screens.
 protocol Presenter {
     func present(screen: MeshScreen, style: PresentationStyle)
+    func dismiss(modal: Bool)
     func openURL(_ url: URL)
 }
 

@@ -3,6 +3,7 @@ import SwiftUI
 struct MeshNavigationStack<Content: View>: View, Presenter {
     @EnvironmentObject private var router: AppState
     @Environment(\.openURL) var openURLAction
+    @Environment(\.dismiss) var dismiss
     @State private var modal: MeshScreen?
     @State private var fullscreen: MeshScreen?
     @State private var path: [MeshScreen] = []
@@ -70,5 +71,20 @@ struct MeshNavigationStack<Content: View>: View, Presenter {
 
     func openURL(_ url: URL) {
         openURLAction(url)
+    }
+
+    func dismiss(modal: Bool) {
+        guard !modal else {
+            dismiss()
+            return
+        }
+
+        if sheet != nil {
+            sheet = nil
+        } else if path.count > 0 {
+            _ = path.popLast()
+        } else {
+            dismiss()
+        }
     }
 }
