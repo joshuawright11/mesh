@@ -1,0 +1,4 @@
+---
+- login:
+    email: string
+    password: string

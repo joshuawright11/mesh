@@ -13,8 +13,10 @@ struct MeshButton: MeshView {
 
     let text: String
     let action: Action?
+    let parameters: [String: String]
 
     @EnvironmentObject var app: AppState
+    @EnvironmentObject var screen: ScreenState
 
     init(yaml: Node) {
         guard let mapping = yaml.mapping else {
@@ -54,6 +56,19 @@ struct MeshButton: MeshView {
             print("[Parsing] Unknown button action length \(actionSequence?.count ?? 0).")
             action = nil
         }
+
+        let parameters = yaml["parameters"]?.mapping ?? [:]
+        var parameterDict: [String: String] = [:]
+        for (key, value) in parameters {
+            guard let key = key.string, let value = value.string else {
+                print("[Parsing] Unable to parse button parameter!")
+                continue
+            }
+
+            parameterDict[key] = value
+        }
+
+        self.parameters = parameterDict
     }
 
     var body: some View {
@@ -65,7 +80,18 @@ struct MeshButton: MeshView {
         case .present(let screenId, let style):
             app.present(id: screenId, style: style)
         case .action(let actionId):
-            print("[Actions] Do action `\(actionId)`!")
+            let _parameters = parameters
+                .compactMapValues { value -> StateItem? in
+                    let trimmed = String(value.dropFirst().dropLast())
+                    guard let value = screen.storage[trimmed] else {
+                        print("[Action] No value for parameter `\(value)` in screen state.")
+                        return nil
+                    }
+
+                    return value
+                }
+
+            app.action(actionId, parameters: _parameters)
         case .openURL(let urlString):
             app.openURL(URL(string: urlString)!)
         case .dismiss(let modal):

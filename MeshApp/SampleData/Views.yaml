@@ -12,6 +12,9 @@
                 id: field1
                 placeholder: Email
                 text: "josh@withapollo.com"
+            - field:
+                id: field2
+                placeholder: Password
             - image:
                 symbol: externaldrive.badge.questionmark
             - text:
@@ -48,6 +51,9 @@
             - button:
                 text: Action - Login
                 action: [action, login]
+                parameters:
+                    email: "{field1}"
+                    password: "{field2}"
             - button:
                 text: Open URL
                 action: [open, https://www.apple.com]

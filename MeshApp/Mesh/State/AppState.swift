@@ -5,11 +5,13 @@ import SwiftUI
 final class AppState: ObservableObject {
     @Published var storage: [String: StateItem] = [:]
     @Published var screens: [MeshScreen]
+    @Published var actions: [MeshAction]
 
     private var presenters: [Presenter] = []
 
-    init(screens: [MeshScreen]) {
+    init(screens: [MeshScreen], actions: [MeshAction]) {
         self.screens = screens
+        self.actions = actions
     }
 
     // MARK: Routing
@@ -59,4 +61,66 @@ final class AppState: ObservableObject {
     func dismiss(modal: Bool = false) {
         presenters.last?.dismiss(modal: modal)
     }
+
+    // MARK: Actions
+
+    func action(_ id: String, parameters: [String: StateItem]) {
+        guard let action = actions.first(where: { $0.id == id }) else {
+            print("[Router] Unable to perform action with unknown id \(id).")
+            return
+        }
+
+        var validatedParameters: [String: StateItem] = [:]
+        for (key, type) in action.parameters {
+            guard let value = parameters[key] else {
+                print("[Actions] Missing parameter `\(key)` for action `\(action.id)`!")
+                return
+            }
+
+            guard value.matchesType(type) else {
+                print("[Actions] Type mismatch of parameter `\(key)` for action `\(action.id)`!")
+                return
+            }
+
+            validatedParameters[key] = value
+        }
+
+        print("[Actions] Do action `\(action.id)` with parameters \(validatedParameters).")
+        // Call Action
+    }
 }
+
+extension StateItem {
+    fileprivate func matchesType(_ type: String) -> Bool {
+        switch self {
+        case .array:
+            return type == "array"
+        case .dict:
+            return type == "dict"
+        case .bool:
+            return type == "bool"
+        case .float:
+            return type == "float"
+        case .string:
+            return type == "string"
+        case .int:
+            return type == "int"
+        }
+    }
+}
+
+/*
+ # Actions
+
+ 1. YAML Definition
+ - potentially associated with a resource
+ - has parameters
+ - parameters have types
+    - Should they have a type? IMO yes - makes client side validation possible, and more readable/understandable YAML for slightly more lines.
+
+ 2. Storage in App
+
+ - all actions live in AppState; no per-screen actions (since they shouldn't do anything except modify routing state)
+ - action parameter for button; anything else?
+
+ */
