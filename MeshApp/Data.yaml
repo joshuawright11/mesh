@@ -8,13 +8,17 @@
         padding: [10, 20, 30, 40]
         fill: x
         content:
+            - field:
+                id: field1
+                placeholder: Email
+                text: "josh@withapollo.com"
             - image:
                 symbol: externaldrive.badge.questionmark
-            - image:
-                url: https://images.unsplash.com/photo-1681405203174-240c946cf06e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2982&q=80
-                resize: fill
             - text:
                 text: hello
+                fontSize: 32
+            - text:
+                text: "{field1}"
                 fontSize: 32
             - hstack:
                 content:
@@ -33,14 +37,17 @@
                     - text:
                         text: 3
             - button:
-                text: PUSH!
+                text: Push
                 action: [present, push, View 1]
             - button:
-                text: MODAL!
+                text: Modal
                 action: [present, modal, View 1]
             - button:
-                text: SHEET!
+                text: Sheet
                 action: [present, sheet, View 2]
+            - button:
+                text: Action
+                action: [action, login]
 - View 2:
     - vstack:
         title: View 2

@@ -1,8 +1,8 @@
 import SwiftUI
 import Yams
 
-final class MeshViewRegistry {
-    static let main = MeshViewRegistry()
+final class Mesh {
+    static let main = Mesh()
 
     private var _registry: [String: (Node) -> AnyView] = [:]
 
@@ -10,11 +10,11 @@ final class MeshViewRegistry {
         _registry[view.type] = { AnyView(view.init(yaml: $0)) }
     }
 
-    func renderer(for typeString: String) -> ((Node) -> AnyView)? {
-        _registry[typeString]
+    func renderer(for viewString: String) -> ((Node) -> AnyView)? {
+        _registry[viewString]
     }
 
-    func registerDefaults() {
+    private func registerDefaults() {
         register(MeshHStack.self)
         register(MeshVStack.self)
         register(MeshZStack.self)
@@ -24,5 +24,13 @@ final class MeshViewRegistry {
         register(MeshTabView.self)
         register(MeshImage.self)
         register(MeshField.self)
+    }
+
+    static func renderer(for viewString: String) -> ((Node) -> AnyView)? {
+        main.renderer(for: viewString)
+    }
+
+    static func setup() {
+        main.registerDefaults()
     }
 }

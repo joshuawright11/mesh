@@ -12,7 +12,7 @@ struct MeshButton: MeshView {
     let text: String
     let action: Action?
 
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var app: AppState
 
     init(yaml: Node) {
         guard let mapping = yaml.mapping else {
@@ -55,9 +55,10 @@ struct MeshButton: MeshView {
     func tapped() {
         switch action {
         case .present(let screenId, let style):
-            router.present(id: screenId, style: style)
+            app.present(id: screenId, style: style)
         case .action(let actionId):
-            print("[Actions] Do action \(actionId)!")
+            print("[Actions] Do action `\(actionId)`!")
+            app.openURL(URL(string: "https://www.apple.com")!)
         case .none:
             break
         }

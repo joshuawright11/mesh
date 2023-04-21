@@ -1,19 +1,9 @@
 import SwiftUI
 
-/*
- 1. Push / Modal / Sheet
- */
-
-/*
- Mesh Router
- 1. Modal
-    - need access
- 2. Sheet
- 3. Push
- */
-
-final class Router: ObservableObject {
+final class AppState: ObservableObject {
+    @Published var storage: [String: MeshState] = [:]
     @Published var screens: [MeshScreen]
+
     private var presenters: [Presenter] = []
 
     init(screens: [MeshScreen]) {

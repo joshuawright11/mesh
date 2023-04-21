@@ -25,8 +25,8 @@ struct GeneralProperties {
     let fill: Fill?
     let title: String?
 
-    init(node: Node) {
-        let paddingSequence = node["padding"]?.sequence ?? []
+    init(yaml: Node) {
+        let paddingSequence = yaml["padding"]?.sequence ?? []
         switch paddingSequence.count {
         case 0:
             padding = nil
@@ -49,10 +49,10 @@ struct GeneralProperties {
             padding = nil
         }
 
-        cornerRadius = node["cornerRadius"]?.cgFloat
-        background = node["background"]?.string
+        cornerRadius = yaml["cornerRadius"]?.cgFloat
+        background = yaml["background"]?.string
 
-        let shadowSequence = node["shadow"]?.sequence ?? []
+        let shadowSequence = yaml["shadow"]?.sequence ?? []
         switch shadowSequence.count {
         case 0:
             shadow = nil
@@ -73,7 +73,7 @@ struct GeneralProperties {
             shadow = nil
         }
 
-        switch node["fill"]?.string {
+        switch yaml["fill"]?.string {
         case "x":
             fill = .x
         case "y":
@@ -83,11 +83,11 @@ struct GeneralProperties {
         case .none:
             fill = nil
         default:
-            print("[Parsing] Unknown fill value \(node["fill"]?.string ?? "N/A").")
+            print("[Parsing] Unknown fill value \(yaml["fill"]?.string ?? "N/A").")
             fill = nil
         }
 
-        title = node["title"]?.string
+        title = yaml["title"]?.string
     }
 }
 

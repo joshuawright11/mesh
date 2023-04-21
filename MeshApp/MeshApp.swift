@@ -2,35 +2,35 @@ import SwiftUI
 
 @main
 struct MeshApp: App {
-
-    @StateObject var router: Router
+    @StateObject var app: AppState
     @State var showPush: Bool = false
 
     var body: some Scene {
         WindowGroup {
             MeshNavigationStack {
                 VStack {
-                    List(router.screens) { screen in
+                    List(app.screens) { screen in
                         Button(screen.id) {
-                            router.present(id: screen.id, style: .fullscreen)
+                            app.present(id: screen.id, style: .fullscreen)
                         }
                     }
                     .navigationTitle("Screens")
                 }
             }
-            .environmentObject(router)
+            .environmentObject(app)
         }
     }
 
     init() {
-        // Register screens.
-        MeshViewRegistry.main.registerDefaults()
+        // Setup Mesh.
+        Mesh.setup()
 
-        // Parse YAML.
-        let screens = TemplateParser().parse()
+        // Get YAML.
+        let yaml = try! TemplateService().getYAML()!
 
-        // Setup the router.
-        let router = Router(screens: screens)
-        _router = StateObject(wrappedValue: router)
+        // Setup Router.
+        let screens = MeshScreen.loadScreens(from: yaml)
+        let app = AppState(screens: screens)
+        _app = StateObject(wrappedValue: app)
     }
 }

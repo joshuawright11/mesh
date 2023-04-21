@@ -36,4 +36,13 @@ extension View {
             self
         }
     }
+
+    @ViewBuilder
+    func `if`(_ value: Bool, modifier: (Self) -> some View) -> some View {
+        if value {
+            modifier(self)
+        } else {
+            self
+        }
+    }
 }

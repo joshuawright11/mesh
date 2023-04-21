@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct MeshNavigationStack<Content: View>: View, Presenter {
-    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var router: AppState
+    @Environment(\.openURL) var openURLAction
     @State private var modal: MeshScreen?
     @State private var fullscreen: MeshScreen?
     @State private var path: [MeshScreen] = []
@@ -24,16 +25,16 @@ struct MeshNavigationStack<Content: View>: View, Presenter {
                     content()
                 }
                 .navigationDestination(for: MeshScreen.self) {
-                    $0.render()
+                    $0.render(newScreen: true)
                 }
             }
             MeshSheet(screen: $sheet)
         }
         .sheet(item: $modal) {
-            $0.render(inNavigation: true)
+            $0.render(inNavigation: true, newScreen: true)
         }
         .fullScreenCover(item: $fullscreen) {
-            $0.render(inNavigation: true)
+            $0.render(inNavigation: true, newScreen: true)
                 .onTapGesture(count: 5) {
                     fullscreen = nil
                 }
@@ -65,5 +66,9 @@ struct MeshNavigationStack<Content: View>: View, Presenter {
         case .sheet:
             sheet = screen
         }
+    }
+
+    func openURL(_ url: URL) {
+        openURLAction(url)
     }
 }

@@ -12,7 +12,8 @@ struct MeshTabView: MeshView, Presenter {
 
     static let type = "tab"
 
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var app: AppState
+    @Environment(\.openURL) var openURLAction
     @State var selectedTab: Int
 
     @State private var modal: MeshScreen?
@@ -34,17 +35,17 @@ struct MeshTabView: MeshView, Presenter {
             return TabItem(index: index, screenId: screenId, title: title, icon: icon)
         }
 
-        self.selectedTab = 0
-        self.items = items
+        self._selectedTab = .init(wrappedValue: 0)
+        self._items = .init(wrappedValue: items)
     }
 
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
                 ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-                    router
+                    app
                         .screen(for: item.screenId)?
-                        .render(inNavigation: true, inTab: true, customPath: $items[index].path)
+                        .render(inNavigation: true, inTab: true, customPath: $items[index].path, newScreen: true)
                         .tabItem {
                             Label(item.title, systemImage: item.icon)
                         }
@@ -54,16 +55,16 @@ struct MeshTabView: MeshView, Presenter {
             MeshSheet(screen: $sheet)
         }
         .sheet(item: $modal) {
-            $0.render(inNavigation: true)
+            $0.render(inNavigation: true, newScreen: true)
         }
         .fullScreenCover(item: $fullscreen) {
-            $0.render(inNavigation: true)
+            $0.render(inNavigation: true, newScreen: true)
         }
         .onAppear {
-            router.pushPresenter(self)
+            app.pushPresenter(self)
         }
         .onDisappear {
-            router.popPresenter()
+            app.popPresenter()
         }
     }
 
@@ -82,6 +83,10 @@ struct MeshTabView: MeshView, Presenter {
         case .sheet:
             self.sheet = screen
         }
+    }
+
+    func openURL(_ url: URL) {
+        openURLAction(url)
     }
 }
 
