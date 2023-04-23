@@ -1,0 +1,11 @@
+---
+- first:
+  data:
+    - todos:
+      id: int
+      name: string
+      complete: bool
+  actions:
+    - login:
+      email: string
+      password: string

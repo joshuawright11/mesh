@@ -6,12 +6,14 @@ final class AppState: ObservableObject {
     @Published var storage: [String: StateItem] = [:]
     @Published var screens: [MeshScreen]
     @Published var actions: [MeshAction]
+    @Published var resources: [MeshResource]
 
     private var presenters: [Presenter] = []
 
-    init(screens: [MeshScreen], actions: [MeshAction]) {
+    init(screens: [MeshScreen], actions: [MeshAction], resources: [MeshResource]) {
         self.screens = screens
         self.actions = actions
+        self.resources = resources
     }
 
     // MARK: Routing
