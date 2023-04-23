@@ -97,8 +97,8 @@ extension StateItem {
         switch self {
         case .array:
             return type == "array"
-        case .dict:
-            return type == "dict"
+        case .object:
+            return type == "object"
         case .bool:
             return type == "bool"
         case .float:

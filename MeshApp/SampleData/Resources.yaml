@@ -1,5 +1,5 @@
 ---
-- first:
+- resource1:
   data:
     - todos:
       id: int

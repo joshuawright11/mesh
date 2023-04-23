@@ -6,5 +6,5 @@ enum StateItem {
     case string(String)
     case float(Double)
     case array([StateItem])
-    case dict([String: StateItem])
+    case object([String: StateItem])
 }
