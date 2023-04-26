@@ -3,8 +3,11 @@ import SwiftUI
 /// There are one of these per Mesh App. Use this to keep track of global state
 /// and route between screens.
 final class AppState: ObservableObject {
-    @Published var storage: [String: StateItem] = [:]
+    /// Local
     @Published var screens: [MeshScreen]
+    @Published var storage: [String: StateItem] = [:]
+
+    // Remote
     @Published var actions: [MeshAction]
     @Published var resources: [MeshResource]
 
@@ -89,6 +92,16 @@ final class AppState: ObservableObject {
 
         print("[Actions] Do action `\(action.id)` with parameters \(validatedParameters).")
         // Call Action
+    }
+
+    // MARK: Resources
+
+    func resource(id: String) -> MeshResource {
+        guard let resource = resources.first(where: { $0.id == id }) else {
+            fatalError("No resource found with id `\(id)`!")
+        }
+
+        return resource
     }
 }
 

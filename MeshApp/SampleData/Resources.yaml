@@ -5,6 +5,9 @@
       id: int
       name: string
       complete: bool
+    - auth:
+      id: int
+      email: string
   actions:
     - login:
       email: string

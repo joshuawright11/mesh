@@ -2,7 +2,9 @@ import Yams
 
 struct MeshDataSource {
     let id: String
+    /// Schema
     let parameters: [String: String]
+    var data: StateItem = []
 
     init?(yaml: Node) {
         guard let dict = yaml.mapping else {

@@ -12,6 +12,8 @@
 		031E350F29F4AE40007B49C4 /* MeshAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E350E29F4AE40007B49C4 /* MeshAction.swift */; };
 		031E351129F5BD3A007B49C4 /* MeshDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351029F5BD3A007B49C4 /* MeshDataSource.swift */; };
 		031E351329F5C35F007B49C4 /* Actions.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 031E351229F5C35F007B49C4 /* Actions.yaml */; };
+		031E351529F5E7A8007B49C4 /* Sequence+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351429F5E7A8007B49C4 /* Sequence+Utilities.swift */; };
+		031E351729F5EA73007B49C4 /* MeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351629F5EA73007B49C4 /* MeshList.swift */; };
 		033AE48529EF6AE600A45B57 /* MeshSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48429EF6AE600A45B57 /* MeshSpacer.swift */; };
 		033AE48A29EF6F0700A45B57 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48929EF6F0700A45B57 /* AppState.swift */; };
 		033AE48C29F05DEF00A45B57 /* MeshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48B29F05DEF00A45B57 /* MeshButton.swift */; };
@@ -65,6 +67,8 @@
 		031E350E29F4AE40007B49C4 /* MeshAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshAction.swift; sourceTree = "<group>"; };
 		031E351029F5BD3A007B49C4 /* MeshDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshDataSource.swift; sourceTree = "<group>"; };
 		031E351229F5C35F007B49C4 /* Actions.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = Actions.yaml; sourceTree = "<group>"; };
+		031E351429F5E7A8007B49C4 /* Sequence+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Utilities.swift"; sourceTree = "<group>"; };
+		031E351629F5EA73007B49C4 /* MeshList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshList.swift; sourceTree = "<group>"; };
 		033AE48429EF6AE600A45B57 /* MeshSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshSpacer.swift; sourceTree = "<group>"; };
 		033AE48929EF6F0700A45B57 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		033AE48B29F05DEF00A45B57 /* MeshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshButton.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 			children = (
 				039788F729F1C9C100E67E19 /* SwiftUI+Utilities.swift */,
 				039788F529F1C9B900E67E19 /* Yams+Utilities.swift */,
+				031E351429F5E7A8007B49C4 /* Sequence+Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				039788F929F1CA2E00E67E19 /* MeshNavigationStack.swift */,
 				039788FB29F1DD5A00E67E19 /* MeshField.swift */,
 				039788FD29F1DD7400E67E19 /* MeshImage.swift */,
+				031E351629F5EA73007B49C4 /* MeshList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				039788FA29F1CA2E00E67E19 /* MeshNavigationStack.swift in Sources */,
 				039788F329F1C96A00E67E19 /* MeshView.swift in Sources */,
 				035C38F629EF33B60035EC9A /* MeshZStack.swift in Sources */,
+				031E351529F5E7A8007B49C4 /* Sequence+Utilities.swift in Sources */,
 				035C38F129EF33060035EC9A /* Parser.swift in Sources */,
 				035C38F429EF333A0035EC9A /* MeshViewRegistry.swift in Sources */,
 				039788F129F1B9E900E67E19 /* MeshTabView.swift in Sources */,
@@ -407,6 +414,7 @@
 				0368CBD629F20F8D00150929 /* StateItem.swift in Sources */,
 				031E350F29F4AE40007B49C4 /* MeshAction.swift in Sources */,
 				03FEA5B329CE501800D6A75D /* MeshApp.swift in Sources */,
+				031E351729F5EA73007B49C4 /* MeshList.swift in Sources */,
 				039788FE29F1DD7400E67E19 /* MeshImage.swift in Sources */,
 				0368CBD829F2495A00150929 /* Presenter.swift in Sources */,
 				035C38EF29EF32A00035EC9A /* MeshScreen.swift in Sources */,

@@ -37,13 +37,9 @@ import Yams
  */
 
 struct MeshResource {
-    struct Item {
-        let fields: [String: StateItem]
-    }
-
     let id: String
-    let data: [MeshDataSource]
-    let actions: [MeshAction]
+    let actions: [String: MeshAction]
+    var dataSources: [String: MeshDataSource]
 
     init?(yaml: Node) {
         guard let dict = yaml.mapping else {
@@ -64,15 +60,39 @@ struct MeshResource {
         self.id = id
         let resourceDict = value.mapping ?? [:]
         let actions = resourceDict["actions"]?.sequence ?? []
-        let data = resourceDict["data"]?.sequence ?? []
+        let dataSources = resourceDict["data"]?.sequence ?? []
 
-        self.actions = actions.compactMap(MeshAction.init)
-        self.data = data.compactMap(MeshDataSource.init)
+        self.actions = actions.compactMap(MeshAction.init).keyed(by: \.id)
+        self.dataSources = dataSources.compactMap(MeshDataSource.init).keyed(by: \.id)
     }
 
-    func data(_ id: String) -> [Item] {
-        []
+    // MARK: Data
+
+    func data(_ id: String) -> StateItem {
+        guard let source = dataSources[id] else {
+            fatalError("[Resource] Unable to find datasource with id \(id)!")
+        }
+
+        return source.data
     }
+
+    mutating func sync() {
+        for id in dataSources.keys {
+            // Fake data for now.
+            print("[Resource] Syncing \(id).")
+            if id == "auth" {
+                dataSources[id]?.data = ["id": 1, "email": "joshuawright11@gmail.com"]
+            } else if id == "todos" {
+                dataSources[id]?.data = [
+                    ["id": 1, "name": "Do Laundry", "complete": false],
+                    ["id": 2, "name": "Kiss Wife", "complete": false],
+                    ["id": 3, "name": "Eat Breakfast", "complete": true],
+                ]
+            }
+        }
+    }
+
+    // MARK: Actions
 
     func action(_ id: String, parameters: [String: StateItem]) {
         print("[Actions] Do action `\(id)` with parameters \(parameters).")
