@@ -18,7 +18,7 @@ struct MeshList: MeshView {
 
     init(yaml: Node) {
         guard let mapping = yaml.mapping else {
-            fatalError("Unable to parse HStack!")
+            fatalError("Unable to parse List!")
         }
 
         guard let item = mapping["item"] else {
