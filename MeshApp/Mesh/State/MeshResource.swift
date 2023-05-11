@@ -36,7 +36,7 @@ import Yams
 
  */
 
-struct MeshResource {
+final class MeshResource {
     let id: String
     let actions: [String: MeshAction]
     var dataSources: [String: MeshDataSource]
@@ -70,18 +70,21 @@ struct MeshResource {
 
     func data(_ id: String) -> StateItem {
         guard let source = dataSources[id] else {
-            fatalError("[Resource] Unable to find datasource with id \(id)!")
+            fatalError("[Resource] Unable to find datasource with id \(id)! Available data sources were: \(dataSources.keys).")
         }
 
         return source.data
     }
 
-    mutating func sync() {
+    func sync() {
         for id in dataSources.keys {
             // Fake data for now.
             print("[Resource] Syncing \(id).")
             if id == "auth" {
-                dataSources[id]?.data = ["id": 1, "email": "joshuawright11@gmail.com"]
+                dataSources[id]?.data = [
+                    "id": 1,
+                    "email": "joshuawright11@gmail.com"
+                ]
             } else if id == "todos" {
                 dataSources[id]?.data = [
                     ["id": 1, "name": "Do Laundry", "complete": false],

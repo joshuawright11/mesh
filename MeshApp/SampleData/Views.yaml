@@ -81,12 +81,23 @@
             - button:
                 text: Dismiss Modal!
                 action: [dismiss, modal]
-- View 3:
+- List:
     - vstack:
         title: View 3
         content:
             - text: 
-                text: View 3 Appears!
+                text: List Appears!
+            - list:
+                data: resource1.todos
+                item:
+                    hstack:
+                        content:
+                            - text:
+                                text: "{id}"
+                            - spacer:
+                            - text:
+                                text: "{name}"
+
 - View 4:
     - tab:
         content: 

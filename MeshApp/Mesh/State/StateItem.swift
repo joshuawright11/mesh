@@ -6,7 +6,8 @@ enum StateItem:
     ExpressibleByIntegerLiteral,
     ExpressibleByFloatLiteral,
     ExpressibleByArrayLiteral,
-    ExpressibleByDictionaryLiteral
+    ExpressibleByDictionaryLiteral,
+    CustomStringConvertible
 {
     case bool(Bool)
     case int(Int)
@@ -14,6 +15,23 @@ enum StateItem:
     case float(Double)
     case array([StateItem])
     case object([String: StateItem])
+
+    var description: String {
+        switch self {
+        case .bool(let value):
+            return "\(value)"
+        case .int(let value):
+            return "\(value)"
+        case .string(let value):
+            return value
+        case .float(let value):
+            return "\(value)"
+        case .array(let value):
+            return "\(value)"
+        case .object(let value):
+            return "\(value)"
+        }
+    }
 
     init(floatLiteral value: Double) {
         self = .float(value)

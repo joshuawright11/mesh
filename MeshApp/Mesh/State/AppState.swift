@@ -103,6 +103,21 @@ final class AppState: ObservableObject {
 
         return resource
     }
+
+    func syncResources() {
+        for resource in resources {
+            resource.sync()
+        }
+    }
+
+    func data(id: String) -> StateItem {
+        let split = id.components(separatedBy: ".")
+        guard split.count == 2 else {
+            fatalError("Invalid data id \(id)!")
+        }
+
+        return resource(id: split[0]).data(split[1])
+    }
 }
 
 extension StateItem {

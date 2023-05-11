@@ -18,6 +18,9 @@ struct MeshApp: App {
                 }
             }
             .environmentObject(app)
+            .onAppear {
+                app.syncResources()
+            }
         }
     }
 

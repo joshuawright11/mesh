@@ -30,13 +30,19 @@ struct MeshList: MeshView {
     }
 
     var body: some View {
-        List(Array(data.enumerated()), id: \.offset) { index, value in
-            let string = "\(value)"
-            Text(string)
+        List(Array(_data.enumerated()), id: \.offset) { index, value in
+            if case .object(let dict) = value {
+                item.render(viewState: dict)
+            }
         }
     }
 
     private var _data: [StateItem] {
-        []
+        switch app.data(id: data) {
+        case .array(let array):
+            return array
+        default:
+            return []
+        }
     }
 }

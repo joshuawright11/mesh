@@ -24,6 +24,7 @@ final class Mesh {
         register(MeshTabView.self)
         register(MeshImage.self)
         register(MeshField.self)
+        register(MeshList.self)
     }
 
     static func renderer(for viewString: String) -> ((Node) -> AnyView)? {

@@ -49,7 +49,7 @@ extension MeshScreen {
 }
 
 extension Node {
-    func render(inNavigation: Bool = false, inTab: Bool = false, customPath: Binding<[MeshScreen]>? = nil, newScreen: Bool = false) -> some View {
+    func render(viewState: [String: StateItem] = [:], inNavigation: Bool = false, inTab: Bool = false, customPath: Binding<[MeshScreen]>? = nil, newScreen: Bool = false) -> some View {
         guard
             let dict = mapping,
             let (key, value) = dict.first,
@@ -63,40 +63,32 @@ extension Node {
             return AnyView(EmptyView())
         }
 
-        let general = GeneralProperties(yaml: value)
-        if string == "tab" || !inNavigation {
-            return AnyView(
-                render(value)
-                    .apply(general)
-                    .if(newScreen) { screen in
-                        ScreenView { screen }
+        @ViewBuilder
+        func _render() -> some View {
+            ViewView(state: viewState) {
+                let general = GeneralProperties(yaml: value)
+                if string == "tab" || !inNavigation {
+                    render(value)
+                        .apply(general)
+                } else {
+                    MeshNavigationStack(inTab: inTab, customPath: customPath) {
+                        render(value)
+                            .apply(general)
                     }
+                }
+            }
+        }
+
+        if newScreen {
+            return AnyView(
+                ScreenView {
+                    _render()
+                }
             )
         } else {
             return AnyView(
-                MeshNavigationStack(inTab: inTab, customPath: customPath) {
-                    render(value)
-                        .apply(general)
-                        .if(newScreen) { screen in
-                            ScreenView { screen }
-                        }
-                }
+                _render()
             )
         }
-    }
-}
-
-struct ScreenView<Content: View>: View {
-    @StateObject var state = ScreenState()
-
-    let content: () -> Content
-
-    init(@ViewBuilder content: @escaping () -> Content) {
-        self.content = content
-    }
-
-    var body: some View {
-        content()
-            .environmentObject(state)
     }
 }

@@ -13,6 +13,7 @@ struct MeshText: MeshView {
     let fontSize: Int
 
     @EnvironmentObject var screen: ScreenState
+    @EnvironmentObject var view: ViewState
 
     init(yaml: Node) {
         guard let mapping = yaml.mapping else {
@@ -39,11 +40,12 @@ struct MeshText: MeshView {
         case .constant(let value):
             return value
         case .state(let key):
-            switch screen.storage[key] {
-            case .string(let value):
-                return value
-            default:
-                return "Nothing :("
+            let storage = screen.storage.merging(view.storage, uniquingKeysWith: { (_, new) in new })
+            switch storage[key] {
+            case .some(let state):
+                return state.description
+            case .none:
+                return "{\(key) not found}"
             }
         }
     }
