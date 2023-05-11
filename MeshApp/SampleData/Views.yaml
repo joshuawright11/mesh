@@ -1,68 +1,70 @@
 ---
 - View 1:
-    - vstack:
-        title: View 1
-        alignment: center
-        background: 00ff00
-        shadow: [0000ff, 10, 5, 20]
-        padding: [10, 20, 30, 40]
-        fill: x
+    - scroll:
         content:
-            - field:
-                id: field1
-                placeholder: Email
-                text: "josh@withapollo.com"
-            - field:
-                id: field2
-                placeholder: Password
-            - image:
-                symbol: externaldrive.badge.questionmark
-            - text:
-                text: hello
-                fontSize: 32
-            - text:
-                text: "{field1}"
-                fontSize: 32
-            - hstack:
+            - vstack:
+                title: View 1
+                alignment: center
+                background: 00ff00
+                shadow: [0000ff, 10, 5, 20]
+                padding: [10, 20, 30, 40]
+                fill: x
                 content:
+                    - field:
+                        id: field1
+                        placeholder: Email
+                        text: "josh@withapollo.com"
+                    - field:
+                        id: field2
+                        placeholder: Password
+                    - image:
+                        symbol: externaldrive.badge.questionmark
                     - text:
-                        text: one
+                        text: hello
+                        fontSize: 32
                     - text:
-                        text: two
-                    - text:
-                        text: three
-            - zstack:
-                content:
-                    - text:
-                        text: 1
-                    - text:
-                        text: 2
-                    - text:
-                        text: 3
-            - button:
-                text: Push
-                action: [present, push, View 1]
-            - button:
-                text: Modal
-                action: [present, modal, View 1]
-            - button:
-                text: Sheet
-                action: [present, sheet, View 2]
-            - button:
-                text: Action - Login
-                action: [action, login]
-                parameters:
-                    email: "{field1}"
-                    password: "{field2}"
-            - button:
-                text: Open URL
-                action: [open, https://www.apple.com]
-            - button:
-                text: Dismiss
-                action: [dismiss]
-            - button:
-                text: Dismiss Modal
-                action: [dismiss, modal]
+                        text: "{field1}"
+                        fontSize: 32
+                    - hstack:
+                        content:
+                            - text:
+                                text: one
+                            - text:
+                                text: two
+                            - text:
+                                text: three
+                    - zstack:
+                        content:
+                            - text:
+                                text: 1
+                            - text:
+                                text: 2
+                            - text:
+                                text: 3
+                    - button:
+                        text: Push
+                        action: [present, push, View 1]
+                    - button:
+                        text: Modal
+                        action: [present, modal, View 1]
+                    - button:
+                        text: Sheet
+                        action: [present, sheet, View 2]
+                    - button:
+                        text: Action - Login
+                        action: [action, login]
+                        parameters:
+                            email: "{field1}"
+                            password: "{field2}"
+                    - button:
+                        text: Open URL
+                        action: [open, https://www.apple.com]
+                    - button:
+                        text: Dismiss
+                        action: [dismiss]
+                    - button:
+                        text: Dismiss Modal
+                        action: [dismiss, modal]
 - View 2:
     - vstack:
         title: View 2

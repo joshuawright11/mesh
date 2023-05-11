@@ -25,6 +25,7 @@ final class Mesh {
         register(MeshImage.self)
         register(MeshField.self)
         register(MeshList.self)
+        register(MeshScroll.self)
     }
 
     static func renderer(for viewString: String) -> ((Node) -> AnyView)? {

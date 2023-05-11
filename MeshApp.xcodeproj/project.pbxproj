@@ -15,6 +15,7 @@
 		031E351529F5E7A8007B49C4 /* Sequence+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351429F5E7A8007B49C4 /* Sequence+Utilities.swift */; };
 		031E351729F5EA73007B49C4 /* MeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351629F5EA73007B49C4 /* MeshList.swift */; };
 		033865D12A0C6F5F00ED3D82 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033865D02A0C6F5F00ED3D82 /* ViewState.swift */; };
+		033865D32A0C879700ED3D82 /* MeshScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033865D22A0C879700ED3D82 /* MeshScroll.swift */; };
 		033AE48529EF6AE600A45B57 /* MeshSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48429EF6AE600A45B57 /* MeshSpacer.swift */; };
 		033AE48A29EF6F0700A45B57 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48929EF6F0700A45B57 /* AppState.swift */; };
 		033AE48C29F05DEF00A45B57 /* MeshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48B29F05DEF00A45B57 /* MeshButton.swift */; };
@@ -71,6 +72,7 @@
 		031E351429F5E7A8007B49C4 /* Sequence+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Utilities.swift"; sourceTree = "<group>"; };
 		031E351629F5EA73007B49C4 /* MeshList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshList.swift; sourceTree = "<group>"; };
 		033865D02A0C6F5F00ED3D82 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		033865D22A0C879700ED3D82 /* MeshScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshScroll.swift; sourceTree = "<group>"; };
 		033AE48429EF6AE600A45B57 /* MeshSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshSpacer.swift; sourceTree = "<group>"; };
 		033AE48929EF6F0700A45B57 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		033AE48B29F05DEF00A45B57 /* MeshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshButton.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				039788FB29F1DD5A00E67E19 /* MeshField.swift */,
 				039788FD29F1DD7400E67E19 /* MeshImage.swift */,
 				031E351629F5EA73007B49C4 /* MeshList.swift */,
+				033865D22A0C879700ED3D82 /* MeshScroll.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				033865D12A0C6F5F00ED3D82 /* ViewState.swift in Sources */,
 				033AE48A29EF6F0700A45B57 /* AppState.swift in Sources */,
 				033AE48C29F05DEF00A45B57 /* MeshButton.swift in Sources */,
+				033865D32A0C879700ED3D82 /* MeshScroll.swift in Sources */,
 				0368CBDA29F24A2700150929 /* ScreenState.swift in Sources */,
 				035C38EB29EF32890035EC9A /* MeshHStack.swift in Sources */,
 				033AE48529EF6AE600A45B57 /* MeshSpacer.swift in Sources */,
