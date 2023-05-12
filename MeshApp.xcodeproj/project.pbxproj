@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		031E350B29F4AA94007B49C4 /* MeshResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E350A29F4AA94007B49C4 /* MeshResource.swift */; };
-		031E350D29F4AAA0007B49C4 /* Resources.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 031E350C29F4AAA0007B49C4 /* Resources.yaml */; };
 		031E350F29F4AE40007B49C4 /* MeshAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E350E29F4AE40007B49C4 /* MeshAction.swift */; };
 		031E351129F5BD3A007B49C4 /* MeshDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351029F5BD3A007B49C4 /* MeshDataSource.swift */; };
-		031E351329F5C35F007B49C4 /* Actions.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 031E351229F5C35F007B49C4 /* Actions.yaml */; };
 		031E351529F5E7A8007B49C4 /* Sequence+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351429F5E7A8007B49C4 /* Sequence+Utilities.swift */; };
 		031E351729F5EA73007B49C4 /* MeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E351629F5EA73007B49C4 /* MeshList.swift */; };
 		033865D12A0C6F5F00ED3D82 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033865D02A0C6F5F00ED3D82 /* ViewState.swift */; };
@@ -20,7 +18,6 @@
 		033AE48A29EF6F0700A45B57 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48929EF6F0700A45B57 /* AppState.swift */; };
 		033AE48C29F05DEF00A45B57 /* MeshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48B29F05DEF00A45B57 /* MeshButton.swift */; };
 		033AE48E29F0B77F00A45B57 /* MeshSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AE48D29F0B77F00A45B57 /* MeshSheet.swift */; };
-		035C38E329EE2B9C0035EC9A /* Views.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 035C38E229EE2B9C0035EC9A /* Views.yaml */; };
 		035C38E629EE2C210035EC9A /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 035C38E529EE2C210035EC9A /* Yams */; };
 		035C38EB29EF32890035EC9A /* MeshHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38EA29EF32890035EC9A /* MeshHStack.swift */; };
 		035C38ED29EF32910035EC9A /* MeshVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035C38EC29EF32910035EC9A /* MeshVStack.swift */; };
@@ -65,10 +62,8 @@
 
 /* Begin PBXFileReference section */
 		031E350A29F4AA94007B49C4 /* MeshResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshResource.swift; sourceTree = "<group>"; };
-		031E350C29F4AAA0007B49C4 /* Resources.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = Resources.yaml; sourceTree = "<group>"; };
 		031E350E29F4AE40007B49C4 /* MeshAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshAction.swift; sourceTree = "<group>"; };
 		031E351029F5BD3A007B49C4 /* MeshDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshDataSource.swift; sourceTree = "<group>"; };
-		031E351229F5C35F007B49C4 /* Actions.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = Actions.yaml; sourceTree = "<group>"; };
 		031E351429F5E7A8007B49C4 /* Sequence+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Utilities.swift"; sourceTree = "<group>"; };
 		031E351629F5EA73007B49C4 /* MeshList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshList.swift; sourceTree = "<group>"; };
 		033865D02A0C6F5F00ED3D82 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
@@ -77,7 +72,6 @@
 		033AE48929EF6F0700A45B57 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		033AE48B29F05DEF00A45B57 /* MeshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshButton.swift; sourceTree = "<group>"; };
 		033AE48D29F0B77F00A45B57 /* MeshSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshSheet.swift; sourceTree = "<group>"; };
-		035C38E229EE2B9C0035EC9A /* Views.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = Views.yaml; sourceTree = "<group>"; };
 		035C38EA29EF32890035EC9A /* MeshHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshHStack.swift; sourceTree = "<group>"; };
 		035C38EC29EF32910035EC9A /* MeshVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshVStack.swift; sourceTree = "<group>"; };
 		035C38EE29EF32A00035EC9A /* MeshScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshScreen.swift; sourceTree = "<group>"; };
@@ -131,16 +125,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		031E350529F34DA7007B49C4 /* SampleData */ = {
-			isa = PBXGroup;
-			children = (
-				035C38E229EE2B9C0035EC9A /* Views.yaml */,
-				031E350C29F4AAA0007B49C4 /* Resources.yaml */,
-				031E351229F5C35F007B49C4 /* Actions.yaml */,
-			);
-			path = SampleData;
-			sourceTree = "<group>";
-		};
 		033AE48129EF4D2300A45B57 /* Mesh */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				03FEA5B229CE501800D6A75D /* MeshApp.swift */,
-				031E350529F34DA7007B49C4 /* SampleData */,
 				033AE48129EF4D2300A45B57 /* Mesh */,
 				03FEA5B629CE501900D6A75D /* Assets.xcassets */,
 			);
@@ -374,9 +357,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031E350D29F4AAA0007B49C4 /* Resources.yaml in Resources */,
-				035C38E329EE2B9C0035EC9A /* Views.yaml in Resources */,
-				031E351329F5C35F007B49C4 /* Actions.yaml in Resources */,
 				03FEA5B729CE501900D6A75D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

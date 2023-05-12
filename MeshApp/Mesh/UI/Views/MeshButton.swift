@@ -91,7 +91,9 @@ struct MeshButton: MeshView {
                     return value
                 }
 
-            app.action(actionId, parameters: _parameters)
+            Task {
+                try await app.action(actionId, parameters: _parameters)
+            }
         case .openURL(let urlString):
             app.openURL(URL(string: urlString)!)
         case .dismiss(let modal):

@@ -7,7 +7,8 @@ enum StateItem:
     ExpressibleByFloatLiteral,
     ExpressibleByArrayLiteral,
     ExpressibleByDictionaryLiteral,
-    CustomStringConvertible
+    CustomStringConvertible,
+    Codable
 {
     case bool(Bool)
     case int(Int)

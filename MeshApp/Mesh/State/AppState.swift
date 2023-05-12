@@ -1,23 +1,26 @@
 import SwiftUI
+import Yams
 
 /// There are one of these per Mesh App. Use this to keep track of global state
 /// and route between screens.
 final class AppState: ObservableObject {
+    struct ResourcesResponse: Codable {
+        struct Resource: Codable {
+            let id: String
+            let collections: [String]
+        }
+
+        let resources: [Resource]
+    }
+
     /// Local
-    @Published var screens: [MeshScreen]
+    @Published var screens: [MeshScreen] = []
     @Published var storage: [String: StateItem] = [:]
 
     // Remote
-    @Published var actions: [MeshAction]
-    @Published var resources: [MeshResource]
+    @Published var resources: [MeshResource] = []
 
     private var presenters: [Presenter] = []
-
-    init(screens: [MeshScreen], actions: [MeshAction], resources: [MeshResource]) {
-        self.screens = screens
-        self.actions = actions
-        self.resources = resources
-    }
 
     // MARK: Routing
 
@@ -69,29 +72,14 @@ final class AppState: ObservableObject {
 
     // MARK: Actions
 
-    func action(_ id: String, parameters: [String: StateItem]) {
-        guard let action = actions.first(where: { $0.id == id }) else {
-            print("[Router] Unable to perform action with unknown id \(id).")
-            return
-        }
-
-        var validatedParameters: [String: StateItem] = [:]
-        for (key, type) in action.parameters {
-            guard let value = parameters[key] else {
-                print("[Actions] Missing parameter `\(key)` for action `\(action.id)`!")
-                return
-            }
-
-            guard value.matchesType(type) else {
-                print("[Actions] Type mismatch of parameter `\(key)` for action `\(action.id)`!")
-                return
-            }
-
-            validatedParameters[key] = value
-        }
-
-        print("[Actions] Do action `\(action.id)` with parameters \(validatedParameters).")
-        // Call Action
+    @MainActor
+    func action(_ id: String, parameters: [String: StateItem]) async throws {
+        print("[Actions] Do action `\(id)` with parameters \(parameters).")
+        let url = URL(string: "http://localhost:3000/v1/actions/\(id)")!
+        let encoded = try JSONEncoder().encode(parameters)
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        _ = try await URLSession.shared.upload(for: req, from: encoded)
     }
 
     // MARK: Resources
@@ -106,9 +94,25 @@ final class AppState: ObservableObject {
 
     @MainActor
     func syncResources() async throws {
+        let url = URL(string: "http://localhost:3000/v1/resources")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let decoder = JSONDecoder()
+        let response = try decoder.decode(ResourcesResponse.self, from: data)
+        self.resources = response.resources.map { MeshResource(id: $0.id, collections: $0.collections) }
         for i in 0..<resources.count {
             try await resources[i].sync()
         }
+    }
+
+    @MainActor
+    func syncScreens() async throws {
+        let url = URL(string: "http://localhost:3000/v1/views")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let string = String(data: data, encoding: .utf8)!
+        let viewsYaml = try Yams.compose(yaml: string)!
+        let screens = MeshScreen.loadScreens(from: viewsYaml)
+        self.screens = screens
+        print("[Resource] Finished Syncing Views.")
     }
 
     func data(id: String) -> StateItem {

@@ -6,6 +6,12 @@ struct MeshDataSource {
     let parameters: [String: String]
     var data: StateItem = []
 
+    init(id: String) {
+        self.id = id
+        self.parameters = [:]
+        self.data = []
+    }
+
     init?(yaml: Node) {
         guard let dict = yaml.mapping else {
             print("[Parsing] Data source wasn't a dict.")

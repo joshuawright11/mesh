@@ -42,29 +42,10 @@ struct MeshResource {
     let actions: [String: MeshAction]
     var dataSources: [String: MeshDataSource]
 
-    init?(yaml: Node) {
-        guard let dict = yaml.mapping else {
-            print("[Parsing] Resource wasn't a dict.") 
-            return nil
-        }
-
-        guard let (key, value) = dict.first else {
-            print("[Parsing] Resource had no keys.")
-            return nil
-        }
-
-        guard let id = key.string else {
-            print("[Parsing] Invalid resource id: \(key).")
-            return nil
-        }
-
+    init(id: String, collections: [String]) {
         self.id = id
-        let resourceDict = value.mapping ?? [:]
-        let actions = resourceDict["actions"]?.sequence ?? []
-        let dataSources = resourceDict["data"]?.sequence ?? []
-
-        self.actions = actions.compactMap(MeshAction.init).keyed(by: \.id)
-        self.dataSources = dataSources.compactMap(MeshDataSource.init).keyed(by: \.id)
+        self.actions = [:]
+        self.dataSources = collections.map(MeshDataSource.init).keyed(by: \.id)
     }
 
     // MARK: Data
@@ -92,22 +73,5 @@ struct MeshResource {
             dataSources[id]?.data = .array(items)
             print("[Resource] Finished Syncing \(id).")
         }
-    }
-
-    // MARK: Actions
-
-    func action(_ id: String, parameters: [String: StateItem]) {
-        print("[Actions] Do action `\(id)` with parameters \(parameters).")
-    }
-
-    static func loadResources(from yaml: Node) -> [MeshResource] {
-        guard let sequence = yaml.sequence else {
-            print("[Parsing] Top level of YAML must be a sequence to parse actions.")
-            return []
-        }
-
-        let actions = sequence.compactMap(MeshResource.init)
-        print("[Parsing] Loaded resources: \(actions.map(\.id)).")
-        return actions
     }
 }
