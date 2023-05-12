@@ -37,7 +37,7 @@ import Yams
 
  */
 
-final class MeshResource {
+struct MeshResource {
     let id: String
     let actions: [String: MeshAction]
     var dataSources: [String: MeshDataSource]
@@ -81,15 +81,16 @@ final class MeshResource {
         let data: [[String: String]]
     }
 
-    func sync() async throws {
+    @MainActor
+    mutating func sync() async throws {
         for id in dataSources.keys {
-            print("[Resource] Syncing \(id).")
             let url = URL(string: "http://localhost:3000/v1/resources/\(self.id)/\(id)")!
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             let res = try decoder.decode(DataResponse.self, from: data)
             let items: [StateItem] = res.data.map { .object($0.mapValues { .string($0) }) }
             dataSources[id]?.data = .array(items)
+            print("[Resource] Finished Syncing \(id).")
         }
     }
 

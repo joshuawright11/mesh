@@ -104,9 +104,10 @@ final class AppState: ObservableObject {
         return resource
     }
 
+    @MainActor
     func syncResources() async throws {
-        for resource in resources {
-            try await resource.sync()
+        for i in 0..<resources.count {
+            try await resources[i].sync()
         }
     }
 
