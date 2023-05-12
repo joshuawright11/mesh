@@ -19,7 +19,10 @@ struct MeshApp: App {
             }
             .environmentObject(app)
             .onAppear {
-                app.syncResources()
+                print("APPEAR!!!")
+                Task {
+                    try await app.syncResources()
+                }
             }
         }
     }

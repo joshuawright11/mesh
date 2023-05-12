@@ -104,9 +104,9 @@ final class AppState: ObservableObject {
         return resource
     }
 
-    func syncResources() {
+    func syncResources() async throws {
         for resource in resources {
-            resource.sync()
+            try await resource.sync()
         }
     }
 

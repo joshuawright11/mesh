@@ -1,3 +1,4 @@
+import Foundation
 import Yams
 
 /*
@@ -43,7 +44,7 @@ final class MeshResource {
 
     init?(yaml: Node) {
         guard let dict = yaml.mapping else {
-            print("[Parsing] Resource wasn't a dict.")
+            print("[Parsing] Resource wasn't a dict.") 
             return nil
         }
 
@@ -76,22 +77,19 @@ final class MeshResource {
         return source.data
     }
 
-    func sync() {
+    struct DataResponse: Codable {
+        let data: [[String: String]]
+    }
+
+    func sync() async throws {
         for id in dataSources.keys {
-            // Fake data for now.
             print("[Resource] Syncing \(id).")
-            if id == "auth" {
-                dataSources[id]?.data = [
-                    "id": 1,
-                    "email": "joshuawright11@gmail.com"
-                ]
-            } else if id == "todos" {
-                dataSources[id]?.data = [
-                    ["id": 1, "name": "Do Laundry", "complete": false],
-                    ["id": 2, "name": "Kiss Wife", "complete": false],
-                    ["id": 3, "name": "Eat Breakfast", "complete": true],
-                ]
-            }
+            let url = URL(string: "http://localhost:3000/v1/resources/\(self.id)/\(id)")!
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decoder = JSONDecoder()
+            let res = try decoder.decode(DataResponse.self, from: data)
+            let items: [StateItem] = res.data.map { .object($0.mapValues { .string($0) }) }
+            dataSources[id]?.data = .array(items)
         }
     }
 
